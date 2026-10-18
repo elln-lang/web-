@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>康伴云｜老人端与子女端演示</title>
+  <link rel="stylesheet" href="member_d.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="index.html" aria-label="康伴云首页"><span>康</span>康伴云</a>
+    <div class="mode-switch" role="group" aria-label="切换演示端">
+      <button class="mode-button active" data-mode="elder">老人端</button>
+      <button class="mode-button" data-mode="child">子女端</button>
+    </div>
+  </header>
+
+  <main>
+    <section id="elderView" class="view active" aria-label="老人端">
+      <div class="hero elder-hero">
+        <div>
+          <p class="eyebrow">星期四 · 居家关怀</p>
+          <h1>早上好，李奶奶</h1>
+          <p>今天也要记得喝水、按时吃饭呀。</p>
+        </div>
+        <div class="weather" aria-label="模拟天气"><strong>27℃</strong><span>晴 · 适合散步</span></div>
+      </div>
+      <div id="elderIncomingCallBanner" class="alert-banner hidden" role="alert">
+        <div><strong>小雨正在呼叫您</strong><span id="elderIncomingCallDetail"></span></div>
+        <div class="action-pair"><button id="answerElderCall">接听</button><button class="secondary" id="laterElderCall">稍后回电</button></div>
+      </div>
+      <div id="elderBlessingBanner" class="alert-banner hidden" role="status">
+        <div><strong>收到小雨的关心</strong><span id="elderBlessingDetail"></span></div>
+        <button id="ackBlessing">我知道啦</button>
+      </div>
+
+      <div class="grid elder-grid">
+        <article class="card status-card">
+          <div class="card-heading"><div><p class="eyebrow">今日状态</p><h2>一切安好</h2></div><span class="status-dot ok">正常</span></div>
+          <div class="metric-row">
+            <div><span>心率</span><strong>72</strong><small>次/分</small></div>
+            <div><span>睡眠</span><strong>7.3</strong><small>小时</small></div>
+            <div><span>步数</span><strong>2,860</strong><small>步</small></div>
+          </div>
+          <p class="hint">以上均为设备模拟数据，仅用于关怀辅助，不作为医疗诊断依据。</p>
+        </article>
+
+        <article class="card medicine-card">
+          <div class="card-heading"><div><p class="eyebrow">下一项提醒</p><h2>午饭后用药</h2></div><span class="time-chip">12:30</span></div>
+          <p>降压药 1 片 · 请遵医嘱服用</p>
+          <button class="primary large-action" id="medicineButton">我已服用</button>
+        </article>
+
+        <article class="card family-card">
+          <p class="eyebrow">家人关怀</p>
+          <h2>小雨刚刚留言</h2>
+          <blockquote>“妈，晚上我给您打视频，记得等我呀。”</blockquote>
+          <button class="secondary large-action" id="replyButton">回复：我知道啦</button>
+          <p id="elderChildCallFeedback" class="feedback" aria-live="polite"></p>
+        </article>
+
+        <article class="card help-card">
+          <p class="eyebrow">联系家人与社区</p>
+          <h2>需要时，随时找得到人</h2>
+          <p>常用联系不会直接拨出，确认后才会进行模拟呼叫。</p>
+          <div class="action-pair">
+            <button class="primary" id="callChildButton">呼叫子女</button>
+            <button class="secondary" id="callCommunityButton">呼叫社区</button>
+          </div>
+          <p id="elderContactFeedback" class="feedback" aria-live="polite"></p>
+          <p class="hint">遇到紧急危险时，请直接联系当地急救电话。</p>
+          <button class="danger large-action" id="helpButton">我需要帮助</button>
+        </article>
+      </div>
+
+      <nav class="bottom-nav" aria-label="老人端菜单">
+        <button class="active">首页</button><button>提醒</button><button>家人</button><button>我的</button>
+      </nav>
+    </section>
+
+    <section id="childView" class="view" aria-label="子女端">
+      <div class="hero child-hero">
+        <div><p class="eyebrow">家庭守护</p><h1>妈妈今天状态平稳</h1><p>最近同步：刚刚 · 智能设备模拟数据</p></div>
+        <div class="avatar" aria-hidden="true">李</div>
+      </div>
+
+      <div id="alertBanner" class="alert-banner hidden" role="alert">
+        <div><strong>收到老人求助提醒</strong><span>李奶奶在家中点击了“我需要帮助”</span></div>
+        <button id="handleAlertButton">立即响应</button>
+      </div>
+      <div id="communityCallBanner" class="alert-banner hidden" role="status">
+        <div><strong id="communityCallTitle">妈妈已呼叫社区服务站</strong><span id="communityCallDetail"></span></div>
+        <div class="action-pair"><button id="communityCallAction">联系社区</button><button class="secondary" id="ackCommunityCall">我已知晓</button></div>
+      </div>
+      <div id="childCallBanner" class="alert-banner hidden" role="alert">
+        <div><strong id="childCallTitle">妈妈正在呼叫你</strong><span id="childCallDetail"></span></div>
+        <div class="action-pair"><button id="answerChildCall">接听</button><button class="secondary" id="laterChildCall">稍后回电</button></div>
+      </div>
+
+      <div class="grid child-grid">
+        <article class="card overview-card">
+          <div class="card-heading"><div><p class="eyebrow">安心概览</p><h2 id="overviewTitle">今日无异常提醒</h2></div><span id="childStatus" class="status-dot ok">平稳</span></div>
+          <div class="metric-row compact">
+            <div><span>心率</span><strong>72</strong><small>次/分</small></div>
+            <div><span>睡眠</span><strong>7.3</strong><small>小时</small></div>
+            <div><span>活动</span><strong>正常</strong><small>较昨日 +8%</small></div>
+          </div>
+          <div class="trend" aria-label="七日活跃趋势模拟图">
+            <span style="height:42%"></span><span style="height:58%"></span><span style="height:50%"></span><span style="height:72%"></span><span style="height:66%"></span><span style="height:82%"></span><span style="height:76%"></span>
+          </div>
+          <p class="hint">趋势仅用于日常关怀参考，身体不适请及时联系专业医疗机构。</p>
+        </article>
+
+        <article class="card contact-card">
+          <p class="eyebrow">快捷关怀</p><h2>让问候不缺席</h2>
+          <div class="action-pair"><button class="primary" id="callButton">给妈妈打电话</button><button class="secondary" id="messageButton">选择关心</button></div>
+          <div id="messageChoices" class="hidden" style="margin-top:12px">
+            <div class="action-pair"><button class="secondary message-choice">记得按时吃饭呀</button><button class="secondary message-choice">今天感觉怎么样？</button></div>
+            <div class="action-pair" style="margin-top:8px"><button class="secondary message-choice">天气凉了，多穿一点</button><button class="secondary message-choice">晚上我给您打视频</button></div>
+            <label style="display:grid;gap:6px;margin-top:12px;color:#777168;font-size:14px">自己编辑
+              <input id="customMessage" maxlength="40" placeholder="写一句想对妈妈说的话" style="font:inherit;padding:10px;border:1px solid #ddd5c8;border-radius:10px">
+            </label><button class="primary" id="sendCustomMessage" style="margin-top:8px;width:100%">发送自定义关心</button>
+          </div>
+          <p id="contactFeedback" class="feedback" aria-live="polite"></p>
+        </article>
+
+        <article class="card timeline-card">
+          <p class="eyebrow">今日动态</p><h2>生活记录</h2>
+          <ol>
+            <li><time>08:12</time><div><strong>晨起活动</strong><span>客厅活动传感器已记录</span></div></li>
+            <li><time>08:36</time><div><strong>早餐打卡</strong><span>老人已主动确认</span></div></li>
+            <li id="childCallTimeline" class="hidden"><time id="childCallTime"></time><div><strong id="childCallRecord"></strong><span>本次为模拟通话记录</span></div></li>
+            <li id="communityCallTimeline" class="hidden"><time id="communityCallTime"></time><div><strong>已知晓社区关怀请求</strong><span id="communityCallRecord"></span></div></li>
+            <li id="communityHandledTimeline" class="hidden"><time id="communityHandledTime"></time><div><strong>社区已完成联系</strong><span>王社工已完成本次模拟服务记录。</span></div></li>
+            <li id="medicineTimeline"><time>12:30</time><div><strong>待确认用药</strong><span>将在午饭后提醒</span></div></li>
+          </ol>
+        </article>
+
+        <article class="card plan-card">
+          <p class="eyebrow">关怀计划</p><h2>本周陪伴 4 / 5</h2>
+          <div class="progress"><span></span></div>
+          <p>今天再完成一次电话关怀，就达成本周小目标。</p>
+        </article>
+      </div>
+
+      <nav class="bottom-nav" aria-label="子女端菜单">
+        <button class="active">守护</button><button>趋势</button><button>消息</button><button>我的</button>
+      </nav>
+    </section>
+  </main>
+
+  <div id="dialogBackdrop" class="dialog-backdrop hidden">
+    <section class="dialog" role="dialog" aria-modal="true" aria-labelledby="dialogTitle">
+      <div class="dialog-icon">♡</div><h2 id="dialogTitle">确认发送求助？</h2>
+      <p id="dialogText">系统将把模拟求助消息同步给子女端。</p>
+      <label id="communityReasonWrap" class="hidden" for="communityReason">呼叫原因
+        <select id="communityReason"><option>身体不适，需要协助</option><option>需要上门帮忙</option><option>设备使用遇到问题</option><option>日常关怀咨询</option></select>
+      </label>
+      <div class="action-pair"><button class="danger" id="confirmDialog">确认发送</button><button class="secondary" id="cancelDialog">先不用</button></div>
+    </section>
+  </div>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="member_d.js"></script>
+</body>
+</html>

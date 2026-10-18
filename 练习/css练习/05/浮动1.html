@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+            width: 700px;
+            min-height: 700px;
+            background-color: aqua;
+            font-size: 24px;
+            line-height: 2;
+        }
+
+        .picture-box {
+            float: right;
+            margin-left: 20px;
+            margin-bottom: 10px;
+            padding: 5px;
+            background-color: blue;
+        }
+
+        .picture-box img {
+            width: 300px;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="container">
+        <div class="picture-box">
+            <img src="../图片/3.webp" alt="人物图片">
+        </div>
+
+        这是一段介绍文字，文字会自动排列在图片盒子的左边。
+        当文字比较多时，会继续围绕图片排列。
+        图片结束以后，下面的文字会恢复占满整行。
+        这就是浮动最典型的文字环绕图片效果。
+    </div>
+</body>
+</html>

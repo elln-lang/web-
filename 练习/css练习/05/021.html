@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 300px;
+            height: 300px;
+            
+        }
+        @media screen and (max-width:768px){
+           .box{
+            background-color: aqua;
+           }
+           .p1{
+            display: none;
+           }
+           .p2{
+            display: none;
+           }
+        }
+        @media screen and (min-width:768px) and (max-width:996px) {
+            .box{
+                background-color: bisque;
+            }
+            .p2{
+                display: none;
+            }
+            .p1{
+                display: block;
+            }
+        }
+        @media screen and (min-width:996px){
+            .box{
+                background-color: blue;
+
+            }
+            
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+    <img src="../图片/3.webp" class="p1">
+    <img src="https://th.bing.com/th/id/R.dc8cb40da3aa7c9e9e31086dca9b22db?rik=Qiw6PnocceTxHA&riu=http%3a%2f%2fpicview.iituku.com%2fiituku%2fthumb%2f1200x665_33772_9fece2ac9fc1d787.jpg%2fwh860.jpg&ehk=Ancih2fCoFT2HPQF5uI2dp%2fprduUhYZ3XQSEBWzbBmQ%3d&risl=&pid=ImgRaw&r=0" class="p2">
+    
+</body>
+</html>
