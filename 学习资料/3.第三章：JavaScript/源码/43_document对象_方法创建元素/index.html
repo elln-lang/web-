@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <div class="nav">导航</div>
+    <div id="container"></div>
+
+    <script>
+
+        var text = document.createElement("p");
+        var content = document.createTextNode("我是文本")
+        var id = document.createAttribute("id")
+        id.value = "root"
+        // appendChild:将内容或者子元素放到容器中
+        text.appendChild(content);
+        text.setAttributeNode(id);
+        console.log(text);
+
+        var container = document.getElementById("container");
+        container.appendChild(text)
+     
+        var te = document.createElement("br")
+        var con = document.createTextNode("你好")
+        var cla = document.createAttribute("class")
+        cla.value = "nihao"
+        te.setAttributeNode(cla)
+        te.appendChild(con)
+        container.appendChild(te)
+        console.log(container)
+    </script>
+    
+</body>
+</html>
